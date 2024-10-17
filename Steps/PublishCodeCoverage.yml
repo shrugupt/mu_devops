@@ -46,7 +46,7 @@ steps:
   inputs:
     script: |
       dotnet tool install -g dotnet-reportgenerator-globaltool
-      reportgenerator -reports:$(Build.ArtifactStagingDirectory)/coverage/**/*_coverage.xml -targetdir:$(Build.ArtifactStagingDirectory)/Coverage -reporttypes:Cobertura
+      reportgenerator -reports:$(Build.ArtifactStagingDirectory)/coverage/**/*_coverage.xml -filefilters:-CloudTurinSiliconPkg/Override/* -targetdir:$(Build.ArtifactStagingDirectory)/Coverage -reporttypes:Cobertura
   condition: gt(variables.coverage_file_count, 0)
 
 - task: PublishCodeCoverageResults@1
